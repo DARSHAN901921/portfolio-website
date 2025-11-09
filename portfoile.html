@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Portfolio — Darshan Y</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Montserrat', sans-serif; 
+      background: #0a0a0a; 
+      color: #eaffff; 
+      overflow-x: hidden; 
+      scroll-behavior: smooth; 
+    }
+    a { text-decoration: none; }
+
+    /* HEADER */
+    header { 
+      width: 100%; 
+      padding: 25px 60px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      background: rgba(0,0,0,0.55); 
+      position: fixed; 
+      top: 0; 
+      backdrop-filter: blur(8px); 
+      z-index: 100; 
+    }
+    header h1 { font-size: 1.8rem; font-weight: 700; color: #00fff2; }
+    header nav ul { display: flex; gap: 30px; }
+    header nav ul li { list-style: none; }
+    header nav ul li a { color: white; font-size: 1rem; transition: 0.3s; }
+    header nav ul li a:hover { color: #00fff2; }
+
+    /* HERO */
+    .hero { 
+      padding: 160px 60px 120px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      gap: 40px; 
+    }
+    .hero-text { max-width: 60%; }
+    .hero h2 { font-size: 3.2rem; color: #00fff2; }
+    .hero p { font-size: 1.25rem; margin-top: 10px; color: #bfeaff; }
+
+    /* Typing animation */
+    .typing { 
+      color: #fffd8a; 
+      border-right: 3px solid #fff; 
+      font-size: 1.4rem; 
+      white-space: nowrap; 
+      overflow: hidden; 
+      width: 0; 
+      animation: typing 4s steps(35) forwards, blink .6s infinite; 
+    }
+    @keyframes typing { to { width: 420px; } }
+    @keyframes blink { 50% { border-color: transparent; } }
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .glow-btn { 
+      padding: 12px 22px; 
+      background: #00fff2; 
+      color: #000; 
+      font-weight: 700; 
+      border-radius: 8px; 
+      transition: .3s; 
+      display: inline-block; 
+    }
+    .glow-btn:hover { 
+      box-shadow: 0 0 20px #00fff2; 
+      transform: translateY(-2px);
+    }
+
+    .hero-photo img { 
+      width: 260px; 
+      height: 260px; 
+      border-radius: 18px; 
+      object-fit: cover; 
+      box-shadow: 0 0 25px #00fff2; 
+      border: 3px solid #00fff2; 
+    }
+
+    /* SECTION TITLE */
+    .section { margin: 60px auto; width: 85%; }
+    .section h2 { 
+      font-size: 2.4rem; 
+      color: #00fff2; 
+      margin-bottom: 20px; 
+      border-left: 5px solid #00fff2; 
+      padding-left: 12px; 
+    }
+
+    /* ABOUT + EDUCATION + INTERESTS */
+    .about p, 
+    #education p,
+    #interests p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #d9e6ff;
+      width: 90%;
+      margin-left: 10px;
+    }
+
+    /* SKILLS (Styled like Projects) */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 25px;
+    }
+
+    .skill-card {
+      background: linear-gradient(145deg, #0d0d0d, #151515);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 25px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    }
+
+    .skill-card h3 {
+      font-size: 1.3rem;
+      color: #00fff2;
+      margin-bottom: 10px;
+    }
+
+    .skill-card p {
+      color: #cceeff;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 25px;
+    }
+
+    .project-card {
+      background: linear-gradient(145deg, #0d0d0d, #151515);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 30px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      color: #00fff2;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: #cceeff;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* EXPERIENCE */
+    .timeline { border-left: 3px solid #00fff2; padding-left: 20px; }
+    .exp { margin-bottom: 18px; }
+    .exp h4 { color: #7bfaff; font-size: 1.1rem; }
+
+    /* FOOTER */
+    footer { 
+      padding: 25px; 
+      text-align: center; 
+      margin-top: 40px; 
+      background: rgba(0,0,0,.4); 
+    }
+    footer a { color: #00fff2; margin: 0 10px; font-size: 1.2rem; }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Darshan Y</h1>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#interests">Interests</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h2>Hello, I'm Darshan </h2>
+    <p class="typing">Full-Stack Developer | problem solver</p>
+    <p>Building efficient web applications & learning daily to become a top-tier engineer.</p>
+
+    <!-- ✅ Only Resume Buttons -->
+    <div class="button-group">
+      <a class="glow-btn" href="Darshan_Y_Resume.pdf" download>Download Resume</a>
+      <a class="glow-btn" href="Darshan_Y_Resume.pdf" target="_blank">View Resume</a>
+    </div>
+  </div>
+
+  <div class="hero-photo">
+    <img src="da.jpg" alt="Darshan's Photo" />
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <h2>About Me</h2>
+  <p>
+    I am Darshan Y, a passionate and curious developer focused on creating modern, 
+    user-friendly web applications. I enjoy solving real-world problems through 
+    code and continuously learning new technologies to grow as a full-stack developer.
+  </p>
+</section>
+
+<section class="section" id="education">
+  <h2>Education</h2>
+  <p>
+    I'm <strong>Darshan Y</strong>, currently pursuing a 
+    <strong>Bachelor of Engineering in Computer Science Engineering</strong> 
+    at <strong>Dayananda Sagar College of Engineering (DSCE)</strong>, Bengaluru, Karnataka.
+    <br><br>
+    Currently in my <strong>2nd Year (2024 – 2028)</strong>, I am developing a strong foundation 
+    in programming, algorithms, data structures, and web development technologies.
+  </p>
+</section>
+
+<section class="section" id="skills">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Web Development</h3>
+      <p>Experienced in creating responsive, interactive websites using HTML, CSS, and JavaScript.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3>Programming Languages</h3>
+      <p>Proficient in Python, Java, and C/C++ with strong knowledge of OOP and problem-solving.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3>Database</h3>
+      <p>Skilled in using SQL for database management, queries, and backend integration.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3>Tools & Version Control</h3>
+      <p>Experienced with Git & GitHub for version control and collaboration.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="interests">
+  <h2>Interests</h2>
+  <p>
+    Apart from coding, I’m deeply interested in <strong>web design, UI/UX, open-source development, 
+    and artificial intelligence</strong>. I love exploring new technologies, building creative projects, 
+    and improving my problem-solving skills through continuous learning and collaboration.
+  </p>
+  <ul style="margin-left: 35px; line-height: 1.8; color: #d9e6ff;">
+    <li>💡 Building efficient web applications</li>
+    <li>🎨 Designing modern and responsive UIs</li>
+    <li>🧠 Solving coding challenges</li>
+    <li>🌐 Exploring new frameworks & APIs</li>
+    <li>🤖 Learning about AI & automation tools</li>
+  </ul>
+</section>
+
+<section class="section" id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3>Portfolio Website</h3>
+      <p>A responsive personal portfolio built with HTML, CSS, and JavaScript to showcase skills and projects.</p>
+    </div>
+    
+    <div class="project-card">
+      <h3>Blood Bank Management System</h3>
+      <p>A Java + MySQL project for managing donors, requests, and blood group data efficiently.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div class="exp">
+      <h4>Self-Taught Developer</h4>
+      <p>Built personal projects and learned through hands-on experimentation and online resources.</p>
+    </div>
+    <div class="exp">
+      <h4>Open-Source Explorer</h4>
+      <p>Learning GitHub contribution flow, small contributions to public repositories.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <h2>Contact</h2>
+  <p>Have a project or collaboration idea? Let's connect!</p><br>
+  <p>Email: <a href="mailto:darshandachhu041@gmail.com" style="color:#00fff2;">darshandachhu041@gmail.com</a></p>
+
+  <br>
+  <a href="https://github.com/DARSHAN901921" target="_blank">GitHub</a> |
+  <a href="https://www.linkedin.com/in/darshan-y-572a2536b/" target="_blank">LinkedIn</a> |
+  <a href="#">Instagram</a>
+</section>
+
+<footer>
+  © 2025 Darshan — Built with ♥ & Code | 
+  <a href="https://github.com/DARSHAN901921" target="_blank">GitHub</a>
+</footer>
+
+</body>
+</html>
